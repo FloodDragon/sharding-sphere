@@ -19,6 +19,8 @@ package io.shardingsphere.shardingproxy.transport.mysql.packet.command.query.tex
 
 import io.shardingsphere.shardingproxy.transport.mysql.packet.MySQLPacket;
 import io.shardingsphere.shardingproxy.transport.mysql.packet.MySQLPacketPayload;
+import java.math.BigInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -27,21 +29,19 @@ import java.util.List;
 
 /**
  * Text result set row packet.
- * 
- * @see <a href="https://dev.mysql.com/doc/internals/en/com-query-response.html#packet-ProtocolText::ResultsetRow">ResultsetRow</a>
  *
  * @author zhangliang
+ * @see <a href="https://dev.mysql.com/doc/internals/en/com-query-response.html#packet-ProtocolText::ResultsetRow">ResultsetRow</a>
  */
 @RequiredArgsConstructor
 @Getter
 public final class TextResultSetRowPacket implements MySQLPacket {
-    
+
     private static final int NULL = 0xfb;
-    
+
     private final int sequenceId;
-    
+
     private final List<Object> data;
-    
     public TextResultSetRowPacket(final MySQLPacketPayload payload, final int columnCount) {
         sequenceId = payload.readInt1();
         data = new ArrayList<>(columnCount);
@@ -49,17 +49,23 @@ public final class TextResultSetRowPacket implements MySQLPacket {
             data.add(payload.readStringLenenc());
         }
     }
-    
+
     @Override
     public void write(final MySQLPacketPayload payload) {
         for (Object each : data) {
             if (null == each) {
                 payload.writeInt1(NULL);
             } else {
-                if (each instanceof byte[]) {
-                    payload.writeBytesLenenc((byte[]) each);
+                if (each.toString().equalsIgnoreCase("true") || each.toString().equalsIgnoreCase("false")) {
+                    boolean b = Boolean.parseBoolean(each.toString());
+                    payload.writeStringLenenc(b ? "1" : "0");
                 } else {
-                    payload.writeStringLenenc(each.toString());
+                    if (each instanceof BigInteger) {
+                        long v = ((BigInteger) each).longValue();
+                        payload.writeStringLenenc(String.valueOf(v));
+                    } else {
+                        payload.writeStringLenenc(each.toString());
+                    }
                 }
             }
         }

@@ -42,6 +42,7 @@ public abstract class AbstractBackendHandler implements BackendHandler {
             return execute0();
             // CHECKSTYLE:OFF
         } catch (final Exception ex) {
+            ex.printStackTrace();
             // CHECKSTYLE:ON
             Optional<SQLException> sqlException = findSQLException(ex);
             return sqlException.isPresent()

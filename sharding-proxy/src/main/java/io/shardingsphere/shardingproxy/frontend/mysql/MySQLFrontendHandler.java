@@ -44,9 +44,9 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public final class MySQLFrontendHandler extends FrontendHandler {
-    
+
     private final AuthenticationHandler authenticationHandler = new AuthenticationHandler();
-    
+
     @Override
     protected void handshake(final ChannelHandlerContext context) {
         int connectionId = ConnectionIdGenerator.getInstance().nextId();
@@ -54,7 +54,7 @@ public final class MySQLFrontendHandler extends FrontendHandler {
         getBackendConnection().setConnectionId(connectionId);
         context.writeAndFlush(new HandshakePacket(connectionId, authenticationHandler.getAuthPluginData()));
     }
-    
+
     @Override
     protected void auth(final ChannelHandlerContext context, final ByteBuf message) {
         try (MySQLPacketPayload payload = new MySQLPacketPayload(message)) {
@@ -73,14 +73,15 @@ public final class MySQLFrontendHandler extends FrontendHandler {
             }
         }
     }
-    
+
     @Override
     protected void executeCommand(final ChannelHandlerContext context, final ByteBuf message) {
         CommandExecutorSelector.getExecutor(getBackendConnection().getTransactionType(), context.channel().id()).execute(new CommandExecutor(context, message, this));
     }
-    
+
     @Override
     public void channelWritabilityChanged(final ChannelHandlerContext context) {
+        System.out.println("show channelWritabilityChanged  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  " + context.channel().isWritable());
         if (context.channel().isWritable()) {
             synchronized (this) {
                 this.notifyAll();

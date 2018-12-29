@@ -36,34 +36,37 @@ import java.util.Map;
 /**
  * Statement execute callback interface.
  *
+ * @param <T> class type of return value
  * @author gaohongtao
  * @author zhangliang
- *
- * @param <T> class type of return value
  */
 @RequiredArgsConstructor
 public abstract class SQLExecuteCallback<T> implements ShardingExecuteCallback<StatementExecuteUnit, T>, ShardingGroupExecuteCallback<StatementExecuteUnit, T> {
-    
+
     private final DatabaseType databaseType;
-    
+
     private final boolean isExceptionThrown;
-    
+
     @Override
-    public final T execute(final StatementExecuteUnit statementExecuteUnit, final boolean isTrunkThread, final Map<String, Object> shardingExecuteDataMap) throws SQLException {
+    public final T execute(final StatementExecuteUnit statementExecuteUnit, final boolean isTrunkThread,
+        final Map<String, Object> shardingExecuteDataMap) throws SQLException {
         return execute0(statementExecuteUnit, isTrunkThread, shardingExecuteDataMap);
     }
-    
+
     @Override
-    public final Collection<T> execute(final Collection<StatementExecuteUnit> statementExecuteUnits, final boolean isTrunkThread,
-                                       final Map<String, Object> shardingExecuteDataMap) throws SQLException {
+    public final Collection<T> execute(final Collection<StatementExecuteUnit> statementExecuteUnits,
+        final boolean isTrunkThread,
+        final Map<String, Object> shardingExecuteDataMap) throws SQLException {
         Collection<T> result = new LinkedList<>();
         for (StatementExecuteUnit each : statementExecuteUnits) {
             result.add(execute0(each, isTrunkThread, shardingExecuteDataMap));
         }
         return result;
     }
-    
-    private T execute0(final StatementExecuteUnit statementExecuteUnit, final boolean isTrunkThread, final Map<String, Object> shardingExecuteDataMap) throws SQLException {
+
+    private T execute0(final StatementExecuteUnit statementExecuteUnit, final boolean isTrunkThread,
+        final Map<String, Object> shardingExecuteDataMap) throws SQLException {
+        System.out.println("show exec sql >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  " + statementExecuteUnit.getRouteUnit().getDataSourceName() + "_" + statementExecuteUnit.getRouteUnit().getSqlUnit().getSql() + "  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
         ExecutorExceptionHandler.setExceptionThrown(isExceptionThrown);
         DataSourceMetaData dataSourceMetaData = DataSourceMetaDataFactory.newInstance(databaseType, statementExecuteUnit.getDatabaseMetaData().getURL());
         SQLExecutionHook sqlExecutionHook = new SPISQLExecutionHook();
@@ -78,6 +81,6 @@ public abstract class SQLExecuteCallback<T> implements ShardingExecuteCallback<S
             return null;
         }
     }
-    
+
     protected abstract T executeSQL(StatementExecuteUnit statementExecuteUnit) throws SQLException;
 }

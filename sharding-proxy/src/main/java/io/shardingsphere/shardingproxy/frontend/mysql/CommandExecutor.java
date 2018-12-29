@@ -48,17 +48,17 @@ import java.sql.SQLException;
  */
 @RequiredArgsConstructor
 public final class CommandExecutor implements Runnable {
-    
+
     private final ChannelHandlerContext context;
-    
+
     private final ByteBuf message;
-    
+
     private final FrontendHandler frontendHandler;
-    
+
     private int currentSequenceId;
-    
+
     private final RootInvokeHook rootInvokeHook = new SPIRootInvokeHook();
-    
+
     @Override
     public void run() {
         rootInvokeHook.start();
@@ -89,13 +89,15 @@ public final class CommandExecutor implements Runnable {
             rootInvokeHook.finish(connectionSize);
         }
     }
-    
-    private CommandPacket getCommandPacket(final MySQLPacketPayload payload, final BackendConnection backendConnection, final FrontendHandler frontendHandler) throws SQLException {
+
+    private CommandPacket getCommandPacket(final MySQLPacketPayload payload, final BackendConnection backendConnection,
+        final FrontendHandler frontendHandler) throws SQLException {
         int sequenceId = payload.readInt1();
         return CommandPacketFactory.newInstance(sequenceId, payload, backendConnection);
     }
-    
-    private void writeMoreResults(final QueryCommandPacket queryCommandPacket, final int headPacketsCount) throws SQLException {
+
+    private void writeMoreResults(final QueryCommandPacket queryCommandPacket,
+        final int headPacketsCount) throws SQLException {
         if (!context.channel().isActive()) {
             return;
         }
@@ -107,6 +109,7 @@ public final class CommandExecutor implements Runnable {
             while (!context.channel().isWritable() && context.channel().isActive()) {
                 synchronized (frontendHandler) {
                     try {
+                        context.flush();
                         frontendHandler.wait();
                     } catch (final InterruptedException ignored) {
                     }
