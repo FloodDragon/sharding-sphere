@@ -1,0 +1,632 @@
+schemaName: project_1070232728873504769
+
+dataSources:
+  ds_0:
+    url: jdbc:mysql://10.129.60.118:3306/project_1070232728873504769_0?serverTimezone=UTC&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+    connectionTimeoutMilliseconds: 30000
+    idleTimeoutMilliseconds: 60000
+    maxLifetimeMilliseconds: 1800000
+    maxPoolSize: 50
+  ds_1:
+    url: jdbc:mysql://10.129.60.118:3306/project_1070232728873504769_1?serverTimezone=UTC&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+    connectionTimeoutMilliseconds: 30000
+    idleTimeoutMilliseconds: 60000
+    maxLifetimeMilliseconds: 1800000
+    maxPoolSize: 50
+
+shardingRule:
+  tables:
+   auditing:
+     actualDataNodes:  ds_0.auditing_0,  ds_1.auditing_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: auditing_${project_id % 2}
+   axis_edo:
+     actualDataNodes:  ds_0.axis_edo_0,  ds_1.axis_edo_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: axis_edo_${project_id % 2}
+   bar_meta_prop_value:
+     actualDataNodes:  ds_0.bar_meta_prop_value_0,  ds_1.bar_meta_prop_value_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: bar_meta_prop_value_${project_id % 2}
+   bar_meta_property:
+     actualDataNodes:  ds_0.bar_meta_property_0,  ds_1.bar_meta_property_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: bar_meta_property_${project_id % 2}
+   bar_proportion:
+     actualDataNodes:  ds_0.bar_proportion_0,  ds_1.bar_proportion_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: bar_proportion_${project_id % 2}
+   bar_sub_type:
+     actualDataNodes:  ds_0.bar_sub_type_0,  ds_1.bar_sub_type_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: bar_sub_type_${project_id % 2}
+   bimface_integrate:
+     actualDataNodes:  ds_0.bimface_integrate_0,  ds_1.bimface_integrate_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: bimface_integrate_${project_id % 2}
+   blueprint:
+     actualDataNodes:  ds_0.blueprint_0,  ds_1.blueprint_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: blueprint_${project_id % 2}
+   box_clip_group:
+     actualDataNodes:  ds_0.box_clip_group_0,  ds_1.box_clip_group_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: box_clip_group_${project_id % 2}
+   building:
+     actualDataNodes:  ds_0.building_0,  ds_1.building_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: building_${project_id % 2}
+   cache_file:
+     actualDataNodes:  ds_0.cache_file_0,  ds_1.cache_file_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: cache_file_${project_id % 2}
+   cad_paper:
+     actualDataNodes:  ds_0.cad_paper_0,  ds_1.cad_paper_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: cad_paper_${project_id % 2}
+   cenline_edo:
+     actualDataNodes:  ds_0.cenline_edo_0,  ds_1.cenline_edo_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: cenline_edo_${project_id % 2}
+   change_file:
+     actualDataNodes:  ds_0.change_file_0,  ds_1.change_file_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: change_file_${project_id % 2}
+   change_info:
+     actualDataNodes:  ds_0.change_info_0,  ds_1.change_info_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: change_info_${project_id % 2}
+   change_info_group:
+     actualDataNodes:  ds_0.change_info_group_0,  ds_1.change_info_group_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: change_info_group_${project_id % 2}
+   clip_box:
+     actualDataNodes:  ds_0.clip_box_0,  ds_1.clip_box_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: clip_box_${project_id % 2}
+   clip_plane:
+     actualDataNodes:  ds_0.clip_plane_0,  ds_1.clip_plane_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: clip_plane_${project_id % 2}
+   collaboration_lock:
+     actualDataNodes:  ds_0.collaboration_lock_0,  ds_1.collaboration_lock_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: collaboration_lock_${project_id % 2}
+   collaboration_lock_main:
+     actualDataNodes:  ds_0.collaboration_lock_main_0,  ds_1.collaboration_lock_main_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: collaboration_lock_main_${project_id % 2}
+   direct_lock_detail:
+     actualDataNodes:  ds_0.direct_lock_detail_0,  ds_1.direct_lock_detail_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: direct_lock_detail_${project_id % 2}
+   edo:
+     actualDataNodes:  ds_0.edo_0,  ds_1.edo_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: edo_${project_id % 2}
+   edo_backup:
+     actualDataNodes:  ds_0.edo_backup_0,  ds_1.edo_backup_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: edo_backup_${project_id % 2}
+   edo_bar_detail:
+     actualDataNodes:  ds_0.edo_bar_detail_0,  ds_1.edo_bar_detail_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: edo_bar_detail_${project_id % 2}
+   edo_element_sub_type:
+     actualDataNodes:  ds_0.edo_element_sub_type_0,  ds_1.edo_element_sub_type_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: edo_element_sub_type_${project_id % 2}
+   edo_location_info:
+     actualDataNodes:  ds_0.edo_location_info_0,  ds_1.edo_location_info_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: edo_location_info_${project_id % 2}
+   element_type:
+     actualDataNodes:  ds_0.element_type_0,  ds_1.element_type_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: element_type_${project_id % 2}
+   element_type_prop_value:
+     actualDataNodes:  ds_0.element_type_prop_value_0,  ds_1.element_type_prop_value_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: element_type_prop_value_${project_id % 2}
+   element_type_property:
+     actualDataNodes:  ds_0.element_type_property_0,  ds_1.element_type_property_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: element_type_property_${project_id % 2}
+   element_type_quantity:
+     actualDataNodes:  ds_0.element_type_quantity_0,  ds_1.element_type_quantity_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: element_type_quantity_${project_id % 2}
+   file:
+     actualDataNodes:  ds_0.file_0,  ds_1.file_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: file_${project_id % 2}
+   floor:
+     actualDataNodes:  ds_0.floor_0,  ds_1.floor_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: floor_${project_id % 2}
+   floor_element_type:
+     actualDataNodes:  ds_0.floor_element_type_0,  ds_1.floor_element_type_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: floor_element_type_${project_id % 2}
+   floor_system:
+     actualDataNodes:  ds_0.floor_system_0,  ds_1.floor_system_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: floor_system_${project_id % 2}
+   indirect_lock_detail:
+     actualDataNodes:  ds_0.indirect_lock_detail_0,  ds_1.indirect_lock_detail_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: indirect_lock_detail_${project_id % 2}
+   inspection:
+     actualDataNodes:  ds_0.inspection_0,  ds_1.inspection_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: inspection_${project_id % 2}
+   inspection_task:
+     actualDataNodes:  ds_0.inspection_task_0,  ds_1.inspection_task_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: inspection_task_${project_id % 2}
+   inspection_task_record:
+     actualDataNodes:  ds_0.inspection_task_record_0,  ds_1.inspection_task_record_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: inspection_task_record_${project_id % 2}
+   inspection_task_record_attachment:
+     actualDataNodes:  ds_0.inspection_task_record_attachment_0,  ds_1.inspection_task_record_attachment_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: inspection_task_record_attachment_${project_id % 2}
+   lock_dependency:
+     actualDataNodes:  ds_0.lock_dependency_0,  ds_1.lock_dependency_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: lock_dependency_${project_id % 2}
+   lock_log:
+     actualDataNodes:  ds_0.lock_log_0,  ds_1.lock_log_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: lock_log_${project_id % 2}
+   machine_edo:
+     actualDataNodes:  ds_0.machine_edo_0,  ds_1.machine_edo_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: machine_edo_${project_id % 2}
+   machine_file:
+     actualDataNodes:  ds_0.machine_file_0,  ds_1.machine_file_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: machine_file_${project_id % 2}
+   machine_file_group:
+     actualDataNodes:  ds_0.machine_file_group_0,  ds_1.machine_file_group_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: machine_file_group_${project_id % 2}
+   material:
+     actualDataNodes:  ds_0.material_0,  ds_1.material_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: material_${project_id % 2}
+   material_dictionary:
+     actualDataNodes:  ds_0.material_dictionary_0,  ds_1.material_dictionary_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: material_dictionary_${project_id % 2}
+   material_group:
+     actualDataNodes:  ds_0.material_group_0,  ds_1.material_group_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: material_group_${project_id % 2}
+   material_plan:
+     actualDataNodes:  ds_0.material_plan_0,  ds_1.material_plan_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: material_plan_${project_id % 2}
+   material_plan_detail:
+     actualDataNodes:  ds_0.material_plan_detail_0,  ds_1.material_plan_detail_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: material_plan_detail_${project_id % 2}
+   material_texture_map:
+     actualDataNodes:  ds_0.material_texture_map_0,  ds_1.material_texture_map_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: material_texture_map_${project_id % 2}
+   model_file:
+     actualDataNodes:  ds_0.model_file_0,  ds_1.model_file_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: model_file_${project_id % 2}
+   model_file_building:
+     actualDataNodes:  ds_0.model_file_building_0,  ds_1.model_file_building_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: model_file_building_${project_id % 2}
+   model_file_element_type:
+     actualDataNodes:  ds_0.model_file_element_type_0,  ds_1.model_file_element_type_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: model_file_element_type_${project_id % 2}
+   model_file_floor:
+     actualDataNodes:  ds_0.model_file_floor_0,  ds_1.model_file_floor_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: model_file_floor_${project_id % 2}
+   model_file_group:
+     actualDataNodes:  ds_0.model_file_group_0,  ds_1.model_file_group_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: model_file_group_${project_id % 2}
+   model_file_revision:
+     actualDataNodes:  ds_0.model_file_revision_0,  ds_1.model_file_revision_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: model_file_revision_${project_id % 2}
+   model_file_specialty:
+     actualDataNodes:  ds_0.model_file_specialty_0,  ds_1.model_file_specialty_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: model_file_specialty_${project_id % 2}
+   modified_config:
+     actualDataNodes:  ds_0.modified_config_0,  ds_1.modified_config_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: modified_config_${project_id % 2}
+   participant_company:
+     actualDataNodes:  ds_0.participant_company_0,  ds_1.participant_company_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: participant_company_${project_id % 2}
+   participant_company_group:
+     actualDataNodes:  ds_0.participant_company_group_0,  ds_1.participant_company_group_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: participant_company_group_${project_id % 2}
+   participant_company_member:
+     actualDataNodes:  ds_0.participant_company_member_0,  ds_1.participant_company_member_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: participant_company_member_${project_id % 2}
+   project:
+     actualDataNodes:  ds_0.project_0,  ds_1.project_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: project_${project_id % 2}
+   project_effect_picture:
+     actualDataNodes:  ds_0.project_effect_picture_0,  ds_1.project_effect_picture_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: project_effect_picture_${project_id % 2}
+   project_setting:
+     actualDataNodes:  ds_0.project_setting_0,  ds_1.project_setting_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: project_setting_${project_id % 2}
+   project_sub_system:
+     actualDataNodes:  ds_0.project_sub_system_0,  ds_1.project_sub_system_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: project_sub_system_${project_id % 2}
+   room_edo:
+     actualDataNodes:  ds_0.room_edo_0,  ds_1.room_edo_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: room_edo_${project_id % 2}
+   segment:
+     actualDataNodes:  ds_0.segment_0,  ds_1.segment_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: segment_${project_id % 2}
+   segment_custom_filter:
+     actualDataNodes:  ds_0.segment_custom_filter_0,  ds_1.segment_custom_filter_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: segment_custom_filter_${project_id % 2}
+   segment_edo:
+     actualDataNodes:  ds_0.segment_edo_0,  ds_1.segment_edo_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: segment_edo_${project_id % 2}
+   segment_edo_manual:
+     actualDataNodes:  ds_0.segment_edo_manual_0,  ds_1.segment_edo_manual_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: segment_edo_manual_${project_id % 2}
+   segment_element:
+     actualDataNodes:  ds_0.segment_element_0,  ds_1.segment_element_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: segment_element_${project_id % 2}
+   segment_element_type_sub_class:
+     actualDataNodes:  ds_0.segment_element_type_sub_class_0,  ds_1.segment_element_type_sub_class_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: segment_element_type_sub_class_${project_id % 2}
+   segment_floor:
+     actualDataNodes:  ds_0.segment_floor_0,  ds_1.segment_floor_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: segment_floor_${project_id % 2}
+   segment_group:
+     actualDataNodes:  ds_0.segment_group_0,  ds_1.segment_group_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: segment_group_${project_id % 2}
+   segment_line:
+     actualDataNodes:  ds_0.segment_line_0,  ds_1.segment_line_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: segment_line_${project_id % 2}
+   segment_line_edo:
+     actualDataNodes:  ds_0.segment_line_edo_0,  ds_1.segment_line_edo_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: segment_line_edo_${project_id % 2}
+   segment_system:
+     actualDataNodes:  ds_0.segment_system_0,  ds_1.segment_system_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: segment_system_${project_id % 2}
+   simple_edo:
+     actualDataNodes:  ds_0.simple_edo_0,  ds_1.simple_edo_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: simple_edo_${project_id % 2}
+   site:
+     actualDataNodes:  ds_0.site_0,  ds_1.site_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: site_${project_id % 2}
+   site_edo:
+     actualDataNodes:  ds_0.site_edo_0,  ds_1.site_edo_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: site_edo_${project_id % 2}
+   site_file:
+     actualDataNodes:  ds_0.site_file_0,  ds_1.site_file_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: site_file_${project_id % 2}
+   site_file_group:
+     actualDataNodes:  ds_0.site_file_group_0,  ds_1.site_file_group_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: site_file_group_${project_id % 2}
+   sliced_body:
+     actualDataNodes:  ds_0.sliced_body_0,  ds_1.sliced_body_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: sliced_body_${project_id % 2}
+   sliced_edo:
+     actualDataNodes:  ds_0.sliced_edo_0,  ds_1.sliced_edo_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: sliced_edo_${project_id % 2}
+   specialty:
+     actualDataNodes:  ds_0.specialty_0,  ds_1.specialty_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: specialty_${project_id % 2}
+   system:
+     actualDataNodes:  ds_0.system_0,  ds_1.system_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: system_${project_id % 2}
+   table_relation:
+     actualDataNodes:  ds_0.table_relation_0,  ds_1.table_relation_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: table_relation_${project_id % 2}
+   table_revision:
+     actualDataNodes:  ds_0.table_revision_0,  ds_1.table_revision_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: table_revision_${project_id % 2}
+   task_handle_status:
+     actualDataNodes:  ds_0.task_handle_status_0,  ds_1.task_handle_status_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: task_handle_status_${project_id % 2}
+   texture:
+     actualDataNodes:  ds_0.texture_0,  ds_1.texture_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: texture_${project_id % 2}
+   transform_info:
+     actualDataNodes:  ds_0.transform_info_0,  ds_1.transform_info_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: transform_info_${project_id % 2}
+   view_point:
+     actualDataNodes:  ds_0.view_point_0,  ds_1.view_point_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: view_point_${project_id % 2}
+   view_point_edo:
+     actualDataNodes:  ds_0.view_point_edo_0,  ds_1.view_point_edo_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: view_point_edo_${project_id % 2}
+   view_point_element_type:
+     actualDataNodes:  ds_0.view_point_element_type_0,  ds_1.view_point_element_type_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: view_point_element_type_${project_id % 2}
+   view_point_floor:
+     actualDataNodes:  ds_0.view_point_floor_0,  ds_1.view_point_floor_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: view_point_floor_${project_id % 2}
+   view_point_group:
+     actualDataNodes:  ds_0.view_point_group_0,  ds_1.view_point_group_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: view_point_group_${project_id % 2}
+   view_point_other_filter:
+     actualDataNodes:  ds_0.view_point_other_filter_0,  ds_1.view_point_other_filter_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: view_point_other_filter_${project_id % 2}
+   view_point_redline:
+     actualDataNodes:  ds_0.view_point_redline_0,  ds_1.view_point_redline_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: view_point_redline_${project_id % 2}
+   walk_path:
+     actualDataNodes:  ds_0.walk_path_0,  ds_1.walk_path_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: walk_path_${project_id % 2}
+   wall_info:
+     actualDataNodes:  ds_0.wall_info_0,  ds_1.wall_info_1
+     tableStrategy:
+       inline:
+         shardingColumn: project_id
+         algorithmExpression: wall_info_${project_id % 2}
+
+  bindingTables:
+    - auditing, axis_edo, bar_meta_prop_value, bar_meta_property, bar_proportion, bar_sub_type, bimface_integrate, blueprint, box_clip_group, building, cache_file, cad_paper, cenline_edo, change_file, change_info, change_info_group, clip_box, clip_plane, collaboration_lock, collaboration_lock_main, direct_lock_detail, edo, edo_backup, edo_bar_detail, edo_element_sub_type, edo_location_info, element_type, element_type_prop_value, element_type_property, element_type_quantity, file, floor, floor_element_type, floor_system, indirect_lock_detail, inspection, inspection_task, inspection_task_record, inspection_task_record_attachment, lock_dependency, lock_log, machine_edo, machine_file, machine_file_group, material, material_dictionary, material_group, material_plan, material_plan_detail, material_texture_map, model_file, model_file_building, model_file_element_type, model_file_floor, model_file_group, model_file_revision, model_file_specialty, modified_config, participant_company, participant_company_group, participant_company_member, project, project_effect_picture, project_setting, project_sub_system, room_edo, segment, segment_custom_filter, segment_edo, segment_edo_manual, segment_element, segment_element_type_sub_class, segment_floor, segment_group, segment_line, segment_line_edo, segment_system, simple_edo, site, site_edo, site_file, site_file_group, sliced_body, sliced_edo, specialty, system, table_relation, table_revision, task_handle_status, texture, transform_info, view_point, view_point_edo, view_point_element_type, view_point_floor, view_point_group, view_point_other_filter, view_point_redline, walk_path, wall_info
+  defaultDatabaseStrategy:
+    inline:
+      shardingColumn: project_id
+      algorithmExpression: ds_${project_id % 2}
+  defaultTableStrategy:
+    none:
+  defaultKeyGeneratorClassName: io.shardingsphere.core.keygen.DefaultKeyGenerator
